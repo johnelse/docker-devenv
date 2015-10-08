@@ -3,10 +3,21 @@ MAINTAINER                  John Else <john.else@gmail.com>
 
 RUN     apt-get update
 RUN     apt-get -y install \
+            emacs \
+            nano \
+            vim \
+            openssh-server
+
+RUN     apt-get -y install \
+            gcc \
             ipython \
-            ocaml \
-            openssh-server \
-            vim
+            ocaml
+
+RUN     apt-get -y install \
+            python-pip
+
+RUN     pip install \
+            nose
 
 EXPOSE  22
 
