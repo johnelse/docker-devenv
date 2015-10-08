@@ -10,6 +10,7 @@ import subprocess
 import sys
 
 
+CONTAINER = "%s/devenv" % os.getenv("USER")
 DEFAULT_ADDRESS = '127.0.0.1'
 DEFAULT_PORT = 12345
 
@@ -26,11 +27,10 @@ def main():
                              'container\'s listening port')
 
     args = parser.parse_args(sys.argv[1:])
-    image = "%s/devenv" % os.getenv("USER")
     docker_args = [
         "docker", "run", "-d", "--name", "devenv-container-%d" % args.port,
         "-p", "%s:%d:22" % (args.address, args.port),
-        image
+        CONTAINER
         ]
     print "Launching docker with args %s" % docker_args
     subprocess.call(docker_args)
