@@ -23,7 +23,7 @@ def main():
     parser.add_argument('--address', default=DEFAULT_ADDRESS,
                         help='Host address on which the container will listen')
     parser.add_argument('--port', default=DEFAULT_PORT, type=int,
-                        help='Host port which will forwarded to the '
+                        help='Host port which will be forwarded to the '
                              'container\'s listening port')
     parser.add_argument('-d', '--dir', action='append',
                         help='Local dir to mount in the '
