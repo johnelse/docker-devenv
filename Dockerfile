@@ -40,5 +40,18 @@ RUN     echo "dev ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
 RUN     mkdir /home/dev
 RUN     chown dev /home/dev
 
+# OPAM.
+USER    dev
+RUN     mkdir /home/dev/src
+RUN     git clone git://github.com/ocaml/opam /home/dev/src/opam
+WORKDIR /home/dev/src/opam
+RUN     git checkout 1.2.2
+RUN     ./configure && make lib-ext && make && sudo make install
+RUN     opam init
+RUN     opam switch 4.02.3
+RUN     eval `opam config env`
+RUN     echo 'eval `opam config env`' >> /home/dev/.profile
+
+USER    root
 CMD     ["/usr/sbin/sshd", "-D"]
 
