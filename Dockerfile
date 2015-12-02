@@ -1,7 +1,7 @@
 FROM                        ubuntu:14.04
 MAINTAINER                  John Else <john.else@gmail.com>
 
-RUN     apt-get update
+RUN     apt-get -y update
 RUN     apt-get -y install \
             emacs \
             nano \
