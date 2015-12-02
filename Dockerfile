@@ -1,18 +1,28 @@
 FROM                        ubuntu:14.04
 MAINTAINER                  John Else <john.else@gmail.com>
 
+# Dev tools.
 RUN     apt-get -y update
 RUN     apt-get -y install \
             emacs \
+            git \
             nano \
             vim \
             openssh-server
 
+# Languages.
 RUN     apt-get -y install \
             gcc \
             ipython \
             ocaml
 
+# OPAM dependencies.
+RUN     apt-get -y install \
+            aspcud \
+            m4 \
+            unzip
+
+# Python stuff.
 RUN     apt-get -y install \
             python-pip
 
