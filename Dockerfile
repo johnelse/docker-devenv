@@ -6,6 +6,7 @@ RUN     apt-get -y update
 RUN     apt-get -y install \
             emacs \
             git \
+            man \
             nano \
             vim \
             openssh-server
