@@ -52,6 +52,9 @@ RUN     opam switch 4.02.3
 RUN     eval `opam config env`
 RUN     echo 'eval `opam config env`' >> /home/dev/.profile
 
+# OPAM packages.
+RUN     opam install -y ounit utop
+
 USER    root
 CMD     ["/usr/sbin/sshd", "-D"]
 
