@@ -8,8 +8,9 @@ RUN     apt-get -y install \
             git \
             man \
             nano \
-            vim \
-            openssh-server
+            openssh-server \
+            tmux \
+            vim
 
 # Languages.
 RUN     apt-get -y install \
