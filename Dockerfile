@@ -36,23 +36,23 @@ EXPOSE  22
 RUN     ln -sf /bin/bash /bin/sh
 RUN     mkdir /var/run/sshd
 
-RUN     useradd dev
-RUN     echo "dev:dev" | chpasswd
-RUN     echo "dev ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
-RUN     mkdir /home/dev
-RUN     chown dev /home/dev
+RUN     useradd owner
+RUN     echo "owner:owner" | chpasswd
+RUN     echo "owner ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN     mkdir /home/owner
+RUN     chown owner /home/owner
 
 # OPAM.
-USER    dev
-RUN     mkdir /home/dev/src
-RUN     git clone git://github.com/ocaml/opam /home/dev/src/opam
-WORKDIR /home/dev/src/opam
+USER    owner
+RUN     mkdir /home/owner/src
+RUN     git clone git://github.com/ocaml/opam /home/owner/src/opam
+WORKDIR /home/owner/src/opam
 RUN     git checkout 1.2.2
 RUN     ./configure && make lib-ext && make && sudo make install
 RUN     opam init
 RUN     opam switch 4.02.3
 RUN     eval `opam config env`
-RUN     echo 'eval `opam config env`' >> /home/dev/.profile
+RUN     echo 'eval `opam config env`' >> /home/owner/.profile
 
 # OPAM packages.
 RUN     opam install -y ounit utop
