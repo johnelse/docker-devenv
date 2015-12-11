@@ -1,6 +1,11 @@
 FROM                        ubuntu:14.04
 MAINTAINER                  John Else <john.else@gmail.com>
 
+# Add Anil's PPA
+RUN     apt-get -y update
+RUN     apt-get -y install software-properties-common
+RUN     add-apt-repository ppa:avsm/ppa
+
 # Dev tools.
 RUN     apt-get -y update
 RUN     apt-get -y install \
@@ -18,10 +23,11 @@ RUN     apt-get -y install \
             ipython \
             ocaml
 
-# OPAM dependencies.
+# OPAM and dependencies.
 RUN     apt-get -y install \
             aspcud \
             m4 \
+            opam \
             unzip
 
 # Python stuff.
@@ -35,13 +41,6 @@ EXPOSE  22
 
 RUN     ln -sf /bin/bash /bin/sh
 RUN     mkdir /var/run/sshd
-
-# Install OPAM.
-RUN     mkdir -p /usr/local/src
-RUN     git clone git://github.com/ocaml/opam /usr/local/src/opam
-WORKDIR /usr/local/src/opam
-RUN     git checkout 1.2.2
-RUN     ./configure && make lib-ext && make && make install
 
 # Install wemux.
 RUN     git clone git://github.com/zolrath/wemux.git /usr/local/share/wemux
@@ -66,7 +65,6 @@ RUN     chown guest /home/guest
 USER    guest
 WORKDIR /home/guest
 RUN     opam init
-RUN     opam switch 4.02.3
 RUN     eval `opam config env`
 RUN     echo 'eval `opam config env`' >> /home/guest/.profile
 
