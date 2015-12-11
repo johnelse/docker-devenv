@@ -43,6 +43,12 @@ WORKDIR /usr/local/src/opam
 RUN     git checkout 1.2.2
 RUN     ./configure && make lib-ext && make && make install
 
+# Install wemux.
+RUN     git clone git://github.com/zolrath/wemux.git /usr/local/share/wemux
+RUN     ln -s /usr/local/share/wemux/wemux /usr/local/bin/wemux
+RUN     cp /usr/local/share/wemux/wemux.conf.example /usr/local/etc/wemux.conf
+RUN     echo "host_list=(guest)" > /usr/local/etc/wemux.conf
+
 # Setup owner user.
 RUN     useradd owner
 RUN     echo "owner:owner" | chpasswd
