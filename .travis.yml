@@ -1,0 +1,11 @@
+sudo: required
+services:
+  - docker
+language: python
+install:
+  - pip install pep8
+  - pip install pylint
+script:
+  - pep8 --show-source --show-pep8 run.py
+  - pylint run.py
+  - ./test.sh
