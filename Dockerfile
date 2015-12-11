@@ -36,6 +36,13 @@ EXPOSE  22
 RUN     ln -sf /bin/bash /bin/sh
 RUN     mkdir /var/run/sshd
 
+# Install OPAM.
+RUN     mkdir -p /usr/local/src
+RUN     git clone git://github.com/ocaml/opam /usr/local/src/opam
+WORKDIR /usr/local/src/opam
+RUN     git checkout 1.2.2
+RUN     ./configure && make lib-ext && make && make install
+
 # Setup owner user.
 RUN     useradd owner
 RUN     echo "owner:owner" | chpasswd
@@ -48,14 +55,6 @@ RUN     useradd guest
 RUN     echo "guest:guest" | chpasswd
 RUN     mkdir /home/guest
 RUN     chown guest /home/guest
-
-# Install OPAM.
-USER    owner
-RUN     mkdir /home/owner/src
-RUN     git clone git://github.com/ocaml/opam /home/owner/src/opam
-WORKDIR /home/owner/src/opam
-RUN     git checkout 1.2.2
-RUN     ./configure && make lib-ext && make && sudo make install
 
 # Setup OPAM for guest user.
 USER    guest
