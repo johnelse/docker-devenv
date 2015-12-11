@@ -36,6 +36,7 @@ EXPOSE  22
 RUN     ln -sf /bin/bash /bin/sh
 RUN     mkdir /var/run/sshd
 
+# Setup owner user.
 RUN     useradd owner
 RUN     echo "owner:owner" | chpasswd
 RUN     echo "owner ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
