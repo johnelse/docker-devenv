@@ -49,17 +49,21 @@ RUN     echo "guest:guest" | chpasswd
 RUN     mkdir /home/guest
 RUN     chown guest /home/guest
 
-# OPAM.
+# Install OPAM.
 USER    owner
 RUN     mkdir /home/owner/src
 RUN     git clone git://github.com/ocaml/opam /home/owner/src/opam
 WORKDIR /home/owner/src/opam
 RUN     git checkout 1.2.2
 RUN     ./configure && make lib-ext && make && sudo make install
+
+# Setup OPAM for guest user.
+USER    guest
+WORKDIR /home/guest
 RUN     opam init
 RUN     opam switch 4.02.3
 RUN     eval `opam config env`
-RUN     echo 'eval `opam config env`' >> /home/owner/.profile
+RUN     echo 'eval `opam config env`' >> /home/guest/.profile
 
 # OPAM packages.
 RUN     opam install -y ounit utop
