@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 """
-Helper script for launching a basic developer environment in a docker container.
+Helper script for launching a basic developer environment in a docker
+container.
 """
 
 import argparse
