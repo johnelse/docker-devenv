@@ -43,6 +43,12 @@ RUN     echo "owner ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
 RUN     mkdir /home/owner
 RUN     chown owner /home/owner
 
+# Setup guest user.
+RUN     useradd guest
+RUN     echo "guest:guest" | chpasswd
+RUN     mkdir /home/guest
+RUN     chown guest /home/guest
+
 # OPAM.
 USER    owner
 RUN     mkdir /home/owner/src
