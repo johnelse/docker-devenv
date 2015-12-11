@@ -43,7 +43,7 @@ def main():
             int_path = os.path.basename(ext_path)
             docker_args += ["-v", "%s:/external/%s:ro" % (ext_path, int_path)]
     docker_args.append(CONTAINER)
-    print "Launching docker with args %s" % docker_args
+    sys.stderr.write("Launching docker with args %s\n" % docker_args)
     subprocess.call(docker_args)
 
 
