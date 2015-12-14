@@ -20,6 +20,7 @@ RUN     apt-get -y install \
 # Languages.
 RUN     apt-get -y install \
             gcc \
+            g++ \
             ipython \
             ocaml
 
