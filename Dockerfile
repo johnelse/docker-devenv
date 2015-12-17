@@ -73,5 +73,5 @@ RUN     echo 'eval `opam config env`' >> /home/guest/.profile
 RUN     opam install -y ounit utop
 
 USER    root
-CMD     ["/usr/sbin/sshd", "-D"]
-
+COPY    files/init_container.sh /usr/local/bin/init_container.sh
+CMD     ["/usr/local/bin/init_container.sh"]
