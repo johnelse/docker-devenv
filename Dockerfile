@@ -51,14 +51,12 @@ RUN     echo "host_list=(guest)" > /usr/local/etc/wemux.conf
 
 # Setup owner user.
 RUN     useradd owner
-RUN     echo "owner:owner" | chpasswd
 RUN     echo "owner ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
 RUN     mkdir /home/owner
 RUN     chown owner /home/owner
 
 # Setup guest user.
 RUN     useradd guest
-RUN     echo "guest:guest" | chpasswd
 RUN     mkdir /home/guest
 RUN     chown guest /home/guest
 
