@@ -8,4 +8,4 @@ install:
 script:
   - pep8 --show-source --show-pep8 run.py
   - pylint run.py
-  - ./test.sh
+  - test/travis-test.sh
