@@ -27,6 +27,7 @@ RUN     apt-get -y install \
 # OPAM and dependencies.
 RUN     apt-get -y install \
             aspcud \
+            pkg-config \
             m4 \
             opam \
             unzip
