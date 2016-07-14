@@ -21,6 +21,7 @@ RUN     apt-get -y install \
 RUN     apt-get -y install \
             gcc \
             g++ \
+            ghc \
             ipython \
             ocaml
 
