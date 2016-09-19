@@ -1,7 +1,7 @@
 docker-devenv
 -------------
 
-[![Build status](https://travis-ci.org/johnelse/docker-devenv.png?branch=master)](https://travis-ci.org/johnelse/docker-devenv)
+[![Build status][travis-badge]][travis-url]
 
 Dockerised, SSH-equipped development environment for interviews, pair programming, etc.
 
@@ -19,3 +19,6 @@ install the specified public keys for the `owner` and `guest` users.
 * ssh in as the `owner` user and run `wemux mirror`
 
 You'll then have a read-only view on what `guest` is doing.
+
+[travis-badge]: https://travis-ci.org/johnelse/docker-devenv.png?branch=master
+[travis-url]: https://travis-ci.org/johnelse/docker-devenv
