@@ -2,6 +2,7 @@ docker-devenv
 -------------
 
 [![Build status][travis-badge]][travis-url]
+[![Layers][microbadger-badge]][microbadger-url]
 
 Dockerised, SSH-equipped development environment for interviews, pair programming, etc.
 
@@ -22,3 +23,5 @@ You'll then have a read-only view on what `guest` is doing.
 
 [travis-badge]: https://travis-ci.org/johnelse/docker-devenv.png?branch=master
 [travis-url]: https://travis-ci.org/johnelse/docker-devenv
+[microbadger-badge]: https://images.microbadger.com/badges/image/johnelse/docker-devenv.svg
+[microbadger-url]: https://microbadger.com/images/johnelse/docker-devenv
