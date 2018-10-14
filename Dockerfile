@@ -1,11 +1,6 @@
 FROM                        ubuntu:14.04
 MAINTAINER                  John Else <john.else@gmail.com>
 
-# Add Anil's PPA
-RUN     apt-get -y update
-RUN     apt-get -y install software-properties-common
-RUN     add-apt-repository ppa:avsm/ppa
-
 # Dev tools.
 RUN     apt-get -y update
 RUN     apt-get -y install \
