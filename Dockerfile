@@ -23,7 +23,8 @@ RUN     apt-get -y install \
             g++ \
             ghc \
             ipython \
-            ocaml
+            ocaml \
+            ruby
 
 # OPAM and dependencies.
 RUN     apt-get -y install \
